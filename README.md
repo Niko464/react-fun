@@ -27,17 +27,21 @@ Features:
 - When the video is loading because of slow network, I want it to display a circular progression
 - The circular progression that shows when slow internet has to be visible even when the VideoControllerUI is invisible
 - I want there to be a progress bar of where I'm at in the video
+- I want the video to have a buffer, and I want it to be visual, be able to see how much of the video is loaded
+- I want to be able to click anywhere on the progress bar and jump to that moment of the video
+- I want to be able to see the time of where i'm hovering over the progressbar
 
 TODO:
 
-- I want to be able to click anywhere on the progress bar and jump to that moment of the video
 - The animation of the progressbar has to be smooth (so that if the video length is small, it isn't jittery)
 - I want to be able to control the sound volume
 - I want to be able to control the playback rate
 
-Bug:
+Future improvements:
 
-- When going forward or backwards 10 seconds, the only thing that is not updated is the progressionbar.
+- When I activate the smooth progress bar: going forward or backwards 10 seconds, the only thing that is not updated is the progressionbar.
+- The buffer progressbar should be able to be fragmented, currently if you skip to the end of the video the buffer will go there, and if you go back it will stay there
+even if you haven't really loaded the entire video, the buffer shows you did.
 
 Requirements:
 

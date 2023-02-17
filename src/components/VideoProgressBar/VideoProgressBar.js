@@ -19,8 +19,12 @@ export default function VideoProgressBar({videoRef, isVideoLoaded, isPlaying}) {
     const [currentProgressionFormatedString, setCurrentProgressionFormatedString] = useState("00:00");
     const [videoDurationFormatedString, setVideoDurationFormatedString] = useState("00:00");
     const [videoDuration, setVideoDuration] = useState(0);
+    const [hoverTime, setHoverTime] = useState("00:00");
+
     const progressionRef = createRef();
     const bufferedRef = createRef();
+    const emptyProgressRef = createRef();
+    const hoverTimeRef = createRef();
 
     /*
         When the video is loaded, we get the duration of the video and format it to a string
@@ -109,10 +113,40 @@ export default function VideoProgressBar({videoRef, isVideoLoaded, isPlaying}) {
         }
     }, [videoRef, bufferedRef])
 
+    function handleProgressBarClick(e) {
+        if (videoRef.current === null) return;
+        const currVideo = videoRef.current;
+
+        const {left, width} = emptyProgressRef.current.getBoundingClientRect();
+        const clickedPosition = e.clientX - left;
+        const clickedPositionPercentage = (clickedPosition / width) * 100;
+        const clickedTime = (clickedPositionPercentage * currVideo.duration) / 100;
+
+        currVideo.currentTime = clickedTime;
+    }
+
+    function handleProgressBarMouseMove(e) {
+        if (videoRef.current === null || hoverTimeRef.current === null) return;
+        const currVideo = videoRef.current;
+
+        const {left, width} = emptyProgressRef.current.getBoundingClientRect();
+        console.log(left, width)
+        const offsetX = e.clientX - left;
+        const percentage = offsetX / width;
+        const time = percentage * currVideo.duration;
+
+        setHoverTime(formatTime(time));
+
+        hoverTimeRef.current.style.left = `${offsetX}px`;
+    }
+
     return (
-        <div className="progress-bar-container">
-            <div className="progress-bar-container-inner">
-                <div className="progress-bar">
+        <div className="progress-bar-container" >
+            <div className="progress-bar-container-inner" >
+                <div ref={emptyProgressRef} className="progress-bar" onClick={handleProgressBarClick} onMouseMove={handleProgressBarMouseMove}>
+                    <span ref={hoverTimeRef} className="progress-bar-hover-time-indicator">
+                        {hoverTime}
+                    </span>
                     <span
                         ref={progressionRef}
                         className="progress-bar-progression"
