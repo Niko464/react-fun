@@ -1,9 +1,10 @@
 import React from 'react';
-import AnimatedNumberDemo from './pages/AnimatedNumberDemo';
+import NetflixPlayerDemo from './pages/NetflixPlayerDemo/NetflixPlayerDemo';
 
 function App(props) {
   return (
-    <AnimatedNumberDemo />
+    // <AnimatedNumberDemo />
+    <NetflixPlayerDemo videoUrl={"vidA.mp4"} title={"Coiffeur Marco"} subtitle={"E01 Episode 01"}/>
   );
 }
 
