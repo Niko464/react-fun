@@ -24,15 +24,22 @@ Features:
 - Each controlling btn should scale up when hovered
 - I want to be able to pause and play the video
 - Be able to go backwards or forwards in the video
+- When the video is loading because of slow network, I want it to display a circular progression
+- The circular progression that shows when slow internet has to be visible even when the VideoControllerUI is invisible
+- I want there to be a progress bar of where I'm at in the video
 
 TODO:
 
-- I want there to be a progress bar of where I'm at in the video
+- I want to be able to click anywhere on the progress bar and jump to that moment of the video
 - The animation of the progressbar has to be smooth (so that if the video length is small, it isn't jittery)
 - I want to be able to control the sound volume
 - I want to be able to control the playback rate
 
+Bug:
+
+- When going forward or backwards 10 seconds, the only thing that is not updated is the progressionbar.
+
 Requirements:
 
-- npm i react-full-screen
+- npm i react-full-screen @mui/material
 - a "videA.mp4" file in the public folder (I didn't push that on github)

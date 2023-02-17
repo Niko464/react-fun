@@ -11,6 +11,7 @@
 
 .video {
     /* z-index: -1; */
+    /* width: auto; */
 }
 
 .full-screen {
@@ -24,6 +25,7 @@
 
 .video-controller-container {
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 100%;
     height: 100px;
@@ -115,10 +117,4 @@
 
 .icon:hover {
     transform: scale(1.4);
-}
-
-
-
-.progress-bar-container {
-    background-color: red;
 }
